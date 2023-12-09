@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Depense{% endblock %}
+
+{% block body %}
+    <h1>Liste Depense</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Description</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for depense in depenses %}
+            <tr>
+                {# <td>{{ depense.id }}</td> #}
+                <td>{{ depense.description }}</td>
+                <td>{{ depense.prix }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_depense_show', {'id': depense.id}) }}">voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_depense_edit', {'id': depense.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">aucune depense</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_depense_new') }}">Create new</a> #}
+{% endblock %}

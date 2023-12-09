@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Vente{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle Vente</h1>
+
+    {{ include('vente/_form.html.twig') }}
+
+    <a href="{{ path('app_vente_index') }}">retour à la liste</a>
+{% endblock %}

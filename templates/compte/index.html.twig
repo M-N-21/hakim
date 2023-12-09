@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+    <h1>Liste Compte</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>NumCompte</th>
+                <th>TypeCompte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compte in comptes %}
+            <tr>
+                {# <td>{{ compte.id }}</td> #}
+                <td>{{ compte.numCompte }}</td>
+                <td>{{ compte.typeCompte }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_compte_show', {'id': compte.id}) }}">voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_compte_edit', {'id': compte.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">aucun compte</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a class="btn btn-primary" href="{{ path('app_compte_new') }}">Create new</a> #}
+{% endblock %}

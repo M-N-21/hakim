@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Proprietaire{% endblock %}
+
+{% block body %}
+    <h1>Nouveau Proprietaire</h1>
+
+    {{ include('proprietaire/_form.html.twig') }}
+
+    <a href="{{ path('app_proprietaire_index') }}">retour à la liste</a>
+{% endblock %}

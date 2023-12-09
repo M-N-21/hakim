@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Operation{% endblock %}
+
+{% block body %}
+    <h1>Liste Operation</h1>
+    <div align="right">
+        <a class="btn btn-secondary right" href="{{ path('app_operations_pdf') }}">imprimer</a>
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>LibelleOperation</th>
+                <th>DateOperation</th>
+                <th>MontantDebit</th>
+                <th>MontantCredit</th>
+                <th>Compte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for operation in operations %}
+            <tr>
+                <td>{{ operation.libelleOperation }}</td>{# <td>{{ operation.id }}</td> #}
+                <td>{{ operation.dateOperation ? operation.dateOperation|date('d/m/Y') : '' }}</td>
+                <td>{{ operation.montantDebit }}</td>
+                <td>{{ operation.montantCredit }}</td>
+                <td>{{ operation.compte }}</td>
+                
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_operation_show', {'id': operation.id}) }}">voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_operation_edit', {'id': operation.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">aucune operation</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_operation_new') }}">Create new</a> #}
+{% endblock %}

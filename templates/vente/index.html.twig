@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Vente{% endblock %}
+
+{% block body %}
+    <h1>Liste Vente</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>DateVente</th>
+                <th>QuantiteVente</th>
+                <th>PrixVente</th>
+                <th>Produit</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vente in ventes %}
+            <tr>
+                {# <td>{{ vente.id }}</td> #}
+                <td>{{ vente.dateVente ? vente.dateVente|date('Y-m-d') : '' }}</td>
+                <td>{{ vente.quantiteVente }}</td>
+                <td>{{ vente.prixVente }}</td>
+                <td>{{ vente.produit }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_compte_show', {'id': compte.id}) }}">voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_compte_edit', {'id': compte.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">aucune vente</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_vente_new') }}">Create new</a> #}
+{% endblock %}

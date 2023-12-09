@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gerant{% endblock %}
+
+{% block body %}
+    <h1>Liste Gerant</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gerant in gerants %}
+            <tr>
+                {# <td>{{ gerant.id }}</td> #}
+                <td>{{ gerant.nom }}</td>
+                <td>{{ gerant.prenom }}</td>
+                <td>{{ gerant.email }}</td>
+                <td>{{ gerant.telephone }}</td>
+                <td>{{ gerant.adresse }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_gerant_show', {'id': gerant.id}) }}">voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_gerant_edit', {'id': gerant.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">aucun gerant</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_gerant_new') }}">Create new</a> #}
+{% endblock %}
